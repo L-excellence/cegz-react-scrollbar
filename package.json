@@ -1,6 +1,6 @@
 {
   "name": "cegz-react-scrollbar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A custom scroll bar component based on React.",
   "license": "MIT",
   "user": "cegz",
@@ -37,9 +37,7 @@
     "not ie <= 8"
   ],
   "dependencies": {
-    "classnames": "^2.5.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "classnames": "^2.5.1"
   },
   "devDependencies": {
     "@types/node": "^20.12.5",
@@ -49,6 +47,8 @@
     "@typescript-eslint/parser": "^7.5.0",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^9.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sass": "^1.74.1",
     "typescript": "^5.2.2",
     "vite": "^5.2.8"

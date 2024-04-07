@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./main.scss";
-// import Scrollbar from "./lib";
-import Scrollbar from "./dist/index.mjs";
+import Scrollbar from "./lib";
+// import Scrollbar from "./dist/index.mjs";
 
 function App() {
   return (
