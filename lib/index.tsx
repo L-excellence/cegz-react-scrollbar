@@ -54,12 +54,8 @@ function Scrollbar(props: IScrollbarProps) {
 
   const gutter = getScrollBarWidth();
   if (gutter && containerEle.current) {
-    const { clientWidth, clientHeight } = containerEle.current;
-    const gutterStyle = {
-      width: clientWidth + gutter + "px",
-      height: clientHeight + gutter + "px",
-    };
-    Object.assign(wrapStyle, gutterStyle);
+    // Set CSS variable with the scrollbar width
+    containerEle.current.style.setProperty("--scrollbar-width", gutter + "px");
   }
 
   return (

@@ -2,6 +2,7 @@
   // 容器设置超出隐藏
   overflow: hidden;
   position: relative;
+  --scrollbar-width: 0px;
 
   &,
   * {
@@ -23,7 +24,8 @@
   .cegz-scrollbar-view-wrap {
     // view-wrap 设置区域滚动
     overflow: scroll;
-    height: 100%;
+    width: calc(100% + var(--scrollbar-width));
+    height: calc(100% + var(--scrollbar-width));
 
     // 使用 CSS 来隐藏原生滚动条（用于 Mac 将 显示滚动条 设置为 根据鼠标和触摸板自动显示）
     &__hidden-default {
