@@ -10,6 +10,8 @@ Install from the [npm registry](https://www.npmjs.com/) with your package manage
 npm install cegz-react-scrollbar
 # or
 yarn add cegz-react-scrollbar
+# or
+pnpm add cegz-react-scrollbar
 ```
 
 ## Usage
