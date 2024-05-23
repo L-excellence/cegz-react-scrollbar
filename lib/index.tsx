@@ -3,6 +3,7 @@ import "./index.scss";
 import classNames from "classnames";
 import Bar from "./Bar";
 import { addResizeListener, getScrollBarWidth, removeResizeListener } from "./utils";
+import useForkRef from "./useForkRef";
 
 export interface IScrollbarProps {
   children: React.ReactNode;
@@ -12,15 +13,17 @@ export interface IScrollbarProps {
   wrapStyle?: React.CSSProperties;
   viewClass?: string;
   onScroll?: React.UIEventHandler<HTMLDivElement>;
+  wrapRef?: React.RefObject<HTMLDivElement>; // 获取 wrapEle 引用
 }
 
 function Scrollbar(props: IScrollbarProps) {
-  const { className, style = {}, wrapClass, viewClass, wrapStyle = {}, onScroll, children } = props;
+  const { className, style = {}, wrapClass, viewClass, wrapStyle = {}, onScroll, wrapRef = () => {}, children } = props;
   const containerEle = useRef<HTMLDivElement>(null); // 外层容器
   const wrapEle = useRef<HTMLDivElement>(null); // 滚动容器
   const viewEle = useRef<HTMLDivElement>(null); // 内容容器
   const [size, setSize] = useState<Record<"width" | "height", string>>({ width: "", height: "" });
   const [move, setMove] = useState<Record<"x" | "y", number>>({ x: 0, y: 0 });
+  const wrapEleRef = useForkRef(wrapEle, wrapRef);
 
   useEffect(() => {
     computedSize();
@@ -64,7 +67,7 @@ function Scrollbar(props: IScrollbarProps) {
         className={classNames("cegz-scrollbar-view-wrap", wrapClass, { "cegz-scrollbar-view-wrap__hidden-default": !gutter })}
         style={wrapStyle}
         onScroll={handleScroll}
-        ref={wrapEle}>
+        ref={wrapEleRef}>
         <div className={classNames("cegz-scrollbar-view", viewClass)} ref={viewEle}>
           {children}
         </div>
