@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, UIEvent, MouseEvent as ReactMouseEv
 import "./index.scss";
 import classNames from "classnames";
 import Bar from "./Bar";
-import { addResizeListener, getScrollBarWidth, removeResizeListener } from "./utils";
+import { addResizeListener, debounce, getScrollBarWidth, removeResizeListener } from "./utils";
 import useForkRef from "./useForkRef";
 
 export interface IScrollbarProps {
@@ -28,8 +28,11 @@ function Scrollbar(props: IScrollbarProps) {
   useEffect(() => {
     computedSize();
     addResizeListener(viewEle.current!, computedSize);
+    const windowResizeFn = debounce(16, computedSize);
+    window.addEventListener("resize", windowResizeFn);
     return () => {
       viewEle.current && removeResizeListener(viewEle.current);
+      window.removeEventListener("resize", windowResizeFn);
     };
   }, []);
 
